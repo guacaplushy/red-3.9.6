@@ -1,0 +1,18 @@
+[Unit]
+Description=Red Bot
+After=multi-user.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/home/pi/.pyenv/versions/red/bin/python -O -m redbot red --no-prompt --dev
+User=pi
+Group=pi
+Type=idle
+Restart=always
+RestartSec=15
+RestartPreventExitStatus=0
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
